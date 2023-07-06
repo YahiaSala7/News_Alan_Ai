@@ -1,40 +1,37 @@
 import { Box, Button, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-
-function SearchNews() {
+import axios from "axios";
+import Loader from "./Loader";
+function SearchNews(Props) {
+  const { setArticles } = Props;
   const [search, setSearch] = useState("");
-  //   const [bodyParts, setBodyParts] = useState([]);
-  //   const handleSearch = async () => {
-  //     if (search) {
-  //       const exercisesData = await fetchData(
-  //         "https://exercisedb.p.rapidapi.com/exercises",
-  //         exerciseOptions
-  //       );
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const handleSearch = async () => {
+    const apiKey = import.meta.env.VITE_APP_NEWS_API_KEY;
+    const apiUrl = `https://newsapi.org/v2/everything?q=${search}&apiKey=${apiKey}`;
+    if (search) {
+      await axios
+        .get(apiUrl)
+        .then((response) => {
+          setArticles(response.data.articles);
+          setIsLoading(false);
+          setError("");
+        })
+        .catch((error) => {
+          setArticles([]);
+          setIsLoading(true);
+          setError(error.message);
+        });
+    }
+  };
+  //   if (isLoading) {
+  //     return <Loader />;
+  //   }
+  //   if (error) {
+  //     return <Typography>{error}</Typography>;
+  //   }
 
-  //       const searchedExercises = exercisesData.filter(
-  //         (item) =>
-  //           item.name.toLowerCase().includes(search) ||
-  //           item.target.toLowerCase().includes(search) ||
-  //           item.equipment.toLowerCase().includes(search) ||
-  //           item.bodyPart.toLowerCase().includes(search)
-  //       );
-  //       window.scrollTo({ top: 1600, left: 100, behavior: "smooth" });
-  //       setSearch("");
-  //       setExercises(searchedExercises);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     const fetchExercisesData = async () => {
-  //       const bodyPartsData = await fetchData(
-  //         "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-  //         exerciseOptions
-  //       );
-  //       setBodyParts(["all", ...bodyPartsData]);
-  //     };
-
-  //     fetchExercisesData();
-  //   }, []);
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
@@ -76,12 +73,10 @@ function SearchNews() {
             fontSize: { lg: "20px", xs: "14px" },
             "&:hover": { bgcolor: "#2f4fff" },
           }}
-          //   onClick={handleSearch}
-        >
+          onClick={handleSearch}>
           Search
         </Button>
       </Box>
-      {/* <Box sx={{ position: "relative", width: "100%", p: "20px" }}></Box> */}
     </Stack>
   );
 }

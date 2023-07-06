@@ -7,7 +7,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import newImg from "../assets/newsImg.jpg";
+import newsImg from "../assets/newsImage.jpg";
 import { createRef, useEffect, useState } from "react";
 function NewsCard(Props) {
   const { articleInfo, index, activeArticle } = Props;
@@ -55,7 +55,7 @@ function NewsCard(Props) {
       <CardMedia
         component="img"
         height="250px"
-        image={urlToImage || newImg}
+        image={urlToImage || newsImg}
         alt={title}
       />
       <CardContent>

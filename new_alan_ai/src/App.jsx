@@ -10,6 +10,8 @@ import Footer from "./Components/Footer";
 import SearchNews from "./Components/SearchNews";
 function App() {
   const [articles, setArticles] = useState([]);
+  console.log(articles);
+
   const [activeArticle, setActiveArticle] = useState(-1);
   useEffect(() => {
     alanBtn({
@@ -41,7 +43,7 @@ function App() {
   return (
     <Box height="100vh">
       <Navbar />
-      <SearchNews />
+      <SearchNews articles={articles} setArticles={setArticles} />
       <NewsCards articles={articles} activeArticle={activeArticle} />
       <Footer />
     </Box>
