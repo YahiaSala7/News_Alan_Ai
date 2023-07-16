@@ -17,7 +17,9 @@ function Footer() {
         sx={{ fontSize: { lg: "28px", xs: "20px" } }}
         my={{ xs: "20px", md: "0" }}
         textAlign="center">
-        Made by Yahia Salah❤️
+        Developed By{" "}
+        <span style={{ color: "black", fontWeight: "bold" }}>Q-Blink</span>{" "}
+        Company
       </Typography>
       <Stack
         px="40px"
@@ -40,7 +42,7 @@ function Footer() {
         justifyContent="center"
         spacing={2}
         alignItems="center">
-        <Typography
+        {/* <Typography
           variant="h5"
           sx={{ fontSize: { lg: "28px", xs: "20px" } }}
           textAlign="center"
@@ -72,7 +74,8 @@ function Footer() {
           <LinkedIn
             sx={{ fontSize: { xs: "30px", sm: "40px" }, color: "white" }}
           />
-        </IconButton>
+        </IconButton> */}
+        <Typography>© 2023 ALL RIGHTS RESERVED</Typography>
       </Stack>
     </Box>
   );

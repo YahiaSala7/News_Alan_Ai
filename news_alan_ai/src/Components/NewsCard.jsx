@@ -11,16 +11,9 @@ import newsImg from "../assets/newsImage.jpg";
 import { createRef, useEffect, useState } from "react";
 function NewsCard(Props) {
   const { articleInfo, index, activeArticle } = Props;
-  const {
-    source,
-    // author,
-    title,
-    description,
-    url,
-    urlToImage,
-    publishedAt,
-    // content,
-  } = articleInfo;
+  const { source, title, description, url, urlToImage, publishedAt } =
+    articleInfo;
+  console.log(articleInfo);
   const [elRefs, setElRefs] = useState([]);
   const scrollToRef = (ref) => {
     window.scroll(0, ref.current.offsetTop - 50);

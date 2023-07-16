@@ -33,12 +33,18 @@ function NewsCards(Props) {
   const currentNews = articles.slice(indexOfFirstNews, indexOfLastNews);
   const paginate = (event, value) => {
     setCurrentPage(value);
-
     window.scrollTo({ top: 1600, behavior: "smooth" });
   };
   if (!articles.length) {
     return (
       <Box>
+        <Typography
+          fontWeight={700}
+          sx={{ fontSize: { lg: "44px", sm: "40px" } }}
+          textAlign={"center"}
+          mb="50px">
+          Examples of how to use alan
+        </Typography>
         <Grid container alignItems="stretch" spacing={3} p="5%">
           {infoCards.map((infoCard, index) => (
             <Grid

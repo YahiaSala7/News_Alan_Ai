@@ -11,7 +11,7 @@ function SearchNews(Props) {
     const apiKey = import.meta.env.VITE_APP_NEWS_API_KEY;
     const apiUrl = `https://newsapi.org/v2/everything?q=${search}&apiKey=${apiKey}`;
     if (search) {
-      await axios
+      axios
         .get(apiUrl)
         .then((response) => {
           setArticles(response.data.articles);
@@ -31,7 +31,6 @@ function SearchNews(Props) {
   //   if (error) {
   //     return <Typography>{error}</Typography>;
   //   }
-
   return (
     <Stack alignItems="center" mt="37px" justifyContent="center" p="20px">
       <Typography
